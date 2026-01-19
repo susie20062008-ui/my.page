@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<title>12E2 – Lớp học hạnh phúc | THPT Chuyên Lê Khiết</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#8b0000;
+  --gold:#ffd966;
+  --cream:#fff7e6;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Noto Serif',serif;
+  background:radial-gradient(circle at top,#b30000,#6d0000);
+  color:var(--cream);
+  overflow-x:hidden;
+}
+header{
+  text-align:center;
+  padding:60px 20px 40px;
+}
+header h1{font-size:3em;margin:0;color:var(--gold)}
+header p{opacity:.9}
+nav{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin:30px 0 50px;
+  flex-wrap:wrap;
+}
+nav button{
+  background:linear-gradient(#ffd966,#f1c40f);
+  border:none;
+  padding:12px 22px;
+  font-weight:bold;
+  border-radius:30px;
+  cursor:pointer;
+  transition:.3s;
+}
+nav button:hover{transform:scale(1.1)}
+section{display:none;padding:0 40px 70px}
+section.active{display:block}
+.year-title{
+  text-align:center;
+  font-size:2em;
+  margin:30px 0 40px;
+  color:var(--gold);
+}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+  gap:40px;
+}
+
+.card{
+  background:rgba(255,255,255,.05);
+  border-radius:28px;
+  overflow:hidden;
+  cursor:pointer;
+  position:relative;
+  box-shadow:0 20px 40px rgba(0,0,0,.45);
+  transition:.4s;
+}
+
+.card:hover{transform:translateY(-8px)}
+.card img{
+  width:100%;
+  height:70vh;
+  object-fit:cover;
+  display:block;
+}
+
+.card span{
+  display:block;
+  padding:12px;
+  text-align:center;
+  font-weight:bold;
+  background:rgba(0,0,0,.2);
+}
+.love{
+  position:absolute;
+  inset:0;
+  background:rgba(139,0,0,.96);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+  font-size:1.05em;
+  line-height:1.6;
+  opacity:0;
+  transition:.45s;
+}
+.card.show .love{opacity:1}
+footer{text-align:center;padding:35px;opacity:.85}
+/* animation Tết */
+.floating{position:fixed;pointer-events:none;opacity:.9}
+.dragon{top:80px;left:-200px;width:160px;animation:fly 18s linear infinite}
+.phoenix{top:220px;right:-180px;width:140px;animation:fly2 22s linear infinite}
+.banhchung{bottom:40px;left:10%;width:80px;animation:float 6s ease-in-out infinite}
+.banhtet{bottom:40px;right:10%;width:90px;animation:float 7s ease-in-out infinite}
+@keyframes fly{to{transform:translateX(120vw)}}
+@keyframes fly2{to{transform:translateX(-120vw)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-25px)}}
+.student-title{
+  text-align:center;
+  color:#ffd966;
+  font-size:2em;
+  margin:60px 0 40px;
+}
+
+.student-grid{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:18px;
+}
+
+.student{
+  background:linear-gradient(145deg,#a00000,#7a0000);
+  color:#fff;
+  padding:14px 10px;
+  text-align:center;
+  font-weight:600;
+  border-radius:18px;
+  box-shadow:0 8px 18px rgba(0,0,0,.35);
+  transition:.3s;
+  cursor:default;
+}
+
+/* hiệu ứng hover */
+.student:hover{
+  transform:translateY(-6px) scale(1.03);
+  background:linear-gradient(145deg,#c00000,#900000);
+}
+
+.social-box{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin:50px 0 20px;
+}
+
+.social-box a{
+  width:55px;
+  height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:26px;
+  color:white;
+  text-decoration:none;
+  transition:.3s;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+.social-box a:hover{
+  transform:translateY(-6px) scale(1.1);
+}
+
+.fb{background:#1877f2}
+.ig{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af)}
+.tt{background:#000}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>12E2 – Lớp học hạnh phúc</h1>
+  <p>THPT Chuyên Lê Khiết • 36 thành viên • 3 năm thanh xuân</p>
+</header>
+<nav>
+  <button onclick="show('intro')">Giới thiệu</button>
+  <button onclick="show('y10')">Lớp 10</button>
+  <button onclick="show('y11')">Lớp 11</button>
+  <button onclick="show('y12')">Lớp 12</button>
+  <button onclick="show('conclude')">12E2</button> 
+</nav>
+<section id="intro" class="active">
+  <div class="year-title">🏮 Giới thiệu 12E2 🏮</div>
+  <p style="max-width:900px;margin:auto;font-size:1.15em;line-height:1.8;text-align:center">
+    12E2 – THPT Chuyên Lê Khiết là một tập thể gồm 36 con người,
+    cùng nhau đi qua ba năm học đầy ắp kỷ niệm.
+    Từ những ngày đầu bỡ ngỡ của lớp 10,
+    đến sự trưởng thành của lớp 11
+    và năm lớp 12 – nơi thanh xuân khép lại.
+    <br><br><b>12E2 – Một thời để nhớ, một đời để thương.</b>
+  </p>
+<div style="margin-top:70px"></div>
+<h2 class="student-title">🌸 36 mảnh ghép của 12E2 🌸</h2>
+<div class="student-grid">
+    <div class="student">Nguyễn Mỹ Duyên</div>
+    <div class="student">Trần Hồ Anh Dương</div>
+    <div class="student">Phùng Sỹ Đạt</div>
+    <div class="student">Nguyễn Ngọc Trà Giang</div>
+    <div class="student">Bùi Ngọc Gia Hân</div>
+    <div class="student">Nguyễn Bảo Hân</div>
+    <div class="student">Hồ Bá Hưng</div>
+    <div class="student">Hồ Vũ Nhật Lam</div>
+    <div class="student">Huỳnh Ngọc Khánh Linh</div>
+    <div class="student">Lê Đăng Mỹ Linh</div>
+    <div class="student">Nguyễn Hoàng Phương Linh</div>
+    <div class="student">Nguyễn Như Mai</div>
+    <div class="student">Lê Nguyễn Minh</div>
+    <div class="student">Hà Hoàng Trà My</div>
+    <div class="student">Lê Ngọc My My</div>
+    <div class="student">Lê Ngọc Trà My</div>
+    <div class="student">Phạm Hoàng Thảo My</div>
+    <div class="student">Vũ Hải My</div>
+    <div class="student">Võ Huỳnh Diễm My</div>
+    <div class="student">Tạ Thị Bảo Ngọc</div>
+    <div class="student">Võ Hoàng Hiếu Nguyễn</div>
+    <div class="student">Vương Thị Ý Nguyện</div>
+    <div class="student">Nguyễn Phương Hà Nhi</div>
+    <div class="student">Trần Ngọc Hân Nhiên</div>
+    <div class="student">Nguyễn Quỳnh Như</div>
+    <div class="student">Bùi Nguyễn Anh Phúc</div>
+    <div class="student">Bùi Nguyễn Thu Phương</div>
+    <div class="student">Đoàn Nguyễn Như Quỳnh</div>
+    <div class="student">Phạm Doãn Văn Quỳnh</div>
+    <div class="student">Dương Đỗ Tuệ Tâm</div>
+    <div class="student">Trần Nữ Mai Thy</div>
+    <div class="student">Trương Nguyễn Gia Trang</div>
+    <div class="student">Võ Đức Tú</div>
+    <div class="student">Lê Phạm Mỹ Uyên</div>
+    <div class="student">Đặng Như Ý</div>
+  </div>
+<div class="social-box">
+  <a href="https://www.facebook.com/share/17eyTyxcdQ/?mibextid=wwXIfr" 
+     target="_blank" class="fb" title="Facebook 12E2">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <a href="https://www.instagram.com/lovefor_e2k34/?igsh=MW9md2R0OHZ3cGl0YQ%3D%3D" 
+     target="_blank" class="ig" title="Instagram 12E2">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a href="https://www.tiktok.com/@e2k34tinhhoahoitu?_r=1&_t=ZS-93C30IOnfTm" 
+     target="_blank" class="tt" title="TikTok 12E2">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+
+
+
+</section>
+
+<section id="y10">
+  <div class="year-title">🌸 Năm lớp 10 – Những ngày đầu thanh xuân</div>
+  <div class="gallery">
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/Những buổi học đầu.jpg"><span>Những buổi học đầu</span><div class="love">Nơi bắt đầu của tình bạn và thanh xuân</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/Offline hè 2023.jpg"><span>Offline hè 2023</span><div class="love">Offline cùng các anh chị đầu tiên của chúng mình</div></div>   
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/Trung thu trên bản.jpg"><span>Rước đèn cho em</span><div class="love">Chúng tớ đi thiện nguyện</div></div>    
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/Boy's day.jpg"><span>Boy's Day</span><div class="love">Chúc mừng các chàng trai lớp chúng ta</div></div>  
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/20.10.2023.jpg"><span>20.10.2023</span><div class="love">Những bông hoa xinh nhất</div></div>    
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/20.11.2023.jpg"><span>20.11.2023</span><div class="love">Lần đầu tri ân thầy cô cùng nhau</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/Teacher's Day.jpg"><span>20.11.2023</span><div class="love">Ngày tri ân đầu tiên của 12E2</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/Halloween 2023.jpg"><span>Halloween 2023</span><div class="love">Đêm halloween đáng sợ</div></div>    
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/Noel.jpg"><span>Noel 2023</span><div class="love">Ấm áp như gia đình thứ hai</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/LKC 2024.jpg"><span>CLK 2024</span><div class="love">Tuổi trẻ của chúng mình</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/LKC.jpg"><span>CLK 2024</span><div class="love">Lần đầu hòa mình vào đại gia đình Lê Khiết</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/Tổng kết cuối năm.jpg"><span>Tổng kết cuối năm</span><div class="love">Lần đầu hòa mình vào đại gia đình Lê Khiết</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/10/Đi trải nghiệm cùng 12E2.jpg"><span>Trải nghiệm Đà Nẵng-Hội An cùng 12E2</span><div class="love">Chúng tớ đi chơi xa</div></div>
+  </div>
+</section>
+<section id="y11">
+  <div class="year-title">🎉 Năm lớp 11 – Gắn kết và trưởng thành</div>
+  <div class="gallery">
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/Offline hè 2024.jpg"><span>Offline hè 2024</span><div class="love">Thanh xuân không ngủ quên</div></div>    
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/Khai giảng 2024.jpg"><span>Khai giảng 2024-2025</span><div class="love">Trở lại với nhiều ước mơ hơn nữa</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/Thiện nguyện trung thu.jpg"><span>Thiện nguyện trung thu</span><div class="love">Cho đi là còn mãi</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/Boy's day.jpg"><span>Boy's Day 19.11.2024</span><div class="love">Một ngày cho những chàng trai 12E2</div></div>    
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/Vietnamese Women's day.jpg"><span>20.11.2025</span><div class="love">Tri ân các thầy cô</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/Giờ thể dục.jpg"><span>Giờ thể dục</span><div class="love">Mệt mà vui</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/8.3.2025.jpg"><span>8.3.2025</span><div class="love">Những bông hoa đẹp nhất</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/Khiêm-Khiết 2025.jpg"><span>Giao lưu Khiêm-Khiết</span><div class="love">Gặp gỡ những người bạn mới</div></div>    
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/LKC 2025.jpg"><span>CLK 2025</span><div class="love">Rực rỡ tuổi trẻ</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/30.4.2025.jpg"><span>30.4.2025-50 năm giải phóng đất nước</span><div class="love">Tự hào lịch sử – trọn vẹn yêu thương</div></div>  
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/Tổng kết hk1 (2).jpg"><span>Tổng kết cuối năm</span><div class="love">Nhìn lại một chặng đường cố gắng</div></div>    
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/Tổng kết hk1.jpg"><span>Tổng kết cuối năm</span><div class="love">Cùng nhau cố gắng nhé</div></div>
+  </div>
+</section>
+<section id="y12">
+  <div class="year-title">🧧 Năm lớp 12 – Thanh xuân khép lại</div>
+  <div class="gallery">
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/12/Offline.jpg"><span>Offline hè 2025</span><div class="love">Khoảnh khắc không quên</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/12/Offline hè 2025.jpg"><span>Offline hè 2025</span><div class="love">Lần hè cuối cùng</div></div>   
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/12/Khai giảng năm học.jpg"><span>Khai giảng 2025-2026</span><div class="love">Năm cuối cùng bên nhau</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/12/Thiện nguyện mùa trung thu.jpg"><span>Thiện nguyện trung thu</span><div class="love">Yêu thương lan tỏa</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/12/Teacher's Day.jpg"><span>20.11.2025</span><div class="love">Lời tri ân thầy cô nhân ngày 20/11</div></div>
+    <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/12/31.12.2025.jpg"><span>31.12.2025</span><div class="love">Ngày cuối cùng của 2025</div></div>
+  </div>
+</section>
+<section id="conclude">
+  <div class="year-title">💌 Lời nhắn gửi yêu thương 💌</div>
+  <div style="max-width:900px;margin:0 auto 60px;font-size:1.15em;line-height:1.9;text-align:center">
+   Ba năm không quá dài cho một đời người, nhưng đủ dài để 12E2 trở thành một gia đình.
+   Từng buổi học, từng lần cười, từng lúc mệt mỏi… tất cả đã dệt nên một thanh xuân rực rỡ.
+   <br><br>
+   Chúng ta đã có
+   3 năm
+   -1000 ngày
+   -24000 giờ
+   -1440000 phút
+   bên nhau
+   <br><br>
+Gửi tập thể lớp 12E2 thân thương của mình,
+<br><br>
+Vậy là chúng ta sắp phải nói lời tạm biệt nhau rồi.
+Từ những ngày đầu còn xa lạ, ngại ngùng, đến lúc trở thành một tập thể gắn bó – tất cả đều là những kỷ niệm mà chắc chắn sẽ không bao giờ quên.
+<br><br>
+Cảm ơn lớp mình vì đã cho mỗi chúng ta một thanh xuân thật đẹp. 
+Cảm ơn những buổi học căng thẳng nhưng đầy tiếng cười, những lần cùng nhau lo lắng trước kiểm tra, cùng nhau mệt mỏi vì deadline, nhưng rồi vẫn động viên nhau cố gắng.
+ Cảm ơn những khoảnh khắc tưởng chừng rất bình thường – ngồi cạnh nhau trong lớp, gọi tên nhau mỗi giờ ra chơi – nhưng sau này nghĩ lại mới thấy quý giá đến nhường nào.
+
+Cảm ơn từng thành viên trong lớp, dù thân hay chưa kịp thân, vì tất cả chúng ta đều là một phần không thể thiếu của tập thể này. Chính mỗi người, với một cá tính riêng, đã tạo nên một lớp học rất đặc biệt, rất “chúng ta”.
+<br><br>
+Mai này mỗi người một con đường, có thể không còn gặp nhau thường xuyên nữa, nhưng mình tin rằng ký ức về lớp 12 sẽ luôn ở lại – như một đoạn thanh xuân trong trẻo, ồn ào mà ấm áp.
+<br><br?
+Chúc cho tất cả chúng ta sẽ vững vàng bước tiếp, đạt được ước mơ của mình và luôn nhớ rằng: chúng ta đã từng là một tập thể, từng cùng nhau lớn lên dưới cùng một mái trường.
+<br><br>
+Cảm ơn vì đã ở bên nhau suốt những năm tháng ấy.
+<br><br>
+Yêu và nhớ lớp mình rất nhiều
+   
+   <br><br>
+   <b>12E2 – 36 con người, 1 thanh xuân, 1 đời không quên.</b>
+   <br><br>
+   <div class="card" onclick="this.classList.toggle('show')"><img src="file:///C:/Jerry/12E2/11/Offline hè 2024.jpg"><span>Offline hè 2024</span><div class="love">Thanh xuân không ngủ quên</div></div>    
+  </div>
+
+
+
+</section>
+<footer>🏮 12E2 – Một thời để nhớ, một đời để thương 🏮</footer>
+<script>
+function show(id){document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+</script>
+</body>
+</html>
